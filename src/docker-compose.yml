@@ -10,6 +10,13 @@
 # Volumes : all persistent data lives below
 #           /Volume1/DockerAppData/apprisedocker/. The /Volume* wildcard is
 #           deliberately NOT used: the platform does not expand it.
+# Auth    : the web interface stores third-party credentials, so HTTP Basic
+#           Auth is enabled (APPRISE_AUTH_REQUIRED=yes). Upstream ships no
+#           built-in account; the small wrapper below creates a random
+#           administrator password in /config/admin-credentials.txt on first
+#           start, reuses it afterwards and then runs the image's own /init.
+#           Unauthenticated requests get 401; the healthcheck only needs a
+#           reply from port 8000, not a 200.
 # TOS rules honoured: Docker Hub image with a fixed tag (never ':latest'),
 #           container_name == application id, restart: unless-stopped,
 #           non-root user, no privileged mode, no network_mode: host, no
@@ -30,6 +37,10 @@ services:
     container_name: apprisedocker
     restart: unless-stopped
     user: "1000:1000"
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        @@ENTRYPOINT_SH@@
     ports:
       - "8108:8000"
     environment:

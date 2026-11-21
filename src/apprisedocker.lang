@@ -3,7 +3,7 @@
 # File name MUST be: <appid>.lang.  23-language superset (14 required by TOS).
 # The App Center picks the text matching the user's device language;
 # untranslated nodes fall back to English, which the official guide allows.
-# Fields: name (app title), auth (upstream author), descript (up to 512
+# Fields: name (app title), auth (publisher/maintainer), descript (up to 512
 # chars), release_note, important (up to 512 chars).
 # Translations come from tosapp.json "translations"; run
 #   tosdocker lang <app>          to re-render this file
@@ -11,185 +11,185 @@
 # ===========================================================================
 [en-us]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [zh-cn]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API 是一个统一的推送入口，能把通知发到上百种服务——Mailgun、Telegram、ntfy、Slack、Discord、Gotify、webhook 等等。把目标地址配置一次、存到一个 tag 下，任何脚本或应用只要向这个 tag POST 一条消息即可；界面里可以直接测试并管理配置。"
-release_note = "1. 首个版本：基于 Docker Hub 的 Apprise API 2.1.0，以非 root 容器运行。一个 HTTP 入口对接 100+ 通知服务，界面可测试，配置按 tag 保存在应用数据目录。"
-important    = "需要 DockerEngine（缺失时应用中心会自动安装）。在网页里添加各服务的通知 URL（每种服务都有固定的 URL 格式），存到一个 tag 下，然后让脚本 POST 到 /notify/<tag>。目标配置保存在 DockerAppData/apprisedocker/config/config.yml。默认没有登录鉴权——请只在内网使用，或用反向代理加一层保护。界面为纯 HTTP，远程访问请配 TLS。"
+descript     = "Apprise API（caronc/apprise-api 的 LinuxServer.io 重打包）是一个统一的 HTTP 入口：把消息转发到你配置的通知服务——Telegram、Discord、Slack、SMTP、webhook、ntfy、Gotify 等 100 多种。消息内容和保存的凭据只会发给你选定的服务端点，目的地由该服务商所在区域决定。网页界面可管理和测试目标，配置保存在 /config 下。"
+release_note = "2.1.0-2：按审核意见整改——新增公开隐私政策 PRIVACY.md（含第三方端点披露），修正 auth 与配置存储路径描述，默认启用 HTTP 基本认证（随机管理员密码见 config/admin-credentials.txt）。"
+important    = "需要 DockerEngine（缺失时自动安装）。网页登录用户为 admin，随机密码保存在 DockerAppData/apprisedocker/config/admin-credentials.txt（删除该文件并重启即可重置）。在网页里添加通知 URL 并存到 tag 下，然后 POST /notify/<tag>。目标与令牌只保存在 /config，无遥测。界面为局域网明文 HTTP，远程访问请用带 TLS 的反向代理。隐私政策见 PRIVACY.md。"
 
 [zh-hk]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API 是一個統一的推送入口，能把通知發到上百種服務——Mailgun、Telegram、ntfy、Slack、Discord、Gotify、webhook 等等。把目標位址設定一次、存到一個 tag 下，任何腳本或應用只要向這個 tag POST 一條訊息即可；介面裡可以直接測試並管理設定。"
-release_note = "1. 首個版本：基於 Docker Hub 的 Apprise API 2.1.0，以非 root 容器運行。一個 HTTP 入口對接 100+ 通知服務，介面可測試，設定按 tag 保存在應用資料目錄。"
-important    = "需要 DockerEngine（缺少時應用中心會自動安裝）。在網頁裡新增各服務的通知 URL（每種服務都有固定的 URL 格式），存到一個 tag 下，然後讓腳本 POST 到 /notify/<tag>。目標設定保存在 DockerAppData/apprisedocker/config/config.yml。預設沒有登入鑑權——請只在內網使用，或用反向代理加一層保護。介面為純 HTTP，遠端存取請配 TLS。"
+descript     = "Apprise API（caronc/apprise-api 的 LinuxServer.io 重打包）是一個統一的 HTTP 入口：把訊息轉發到你設定的通知服務——Telegram、Discord、Slack、SMTP、webhook、ntfy、Gotify 等 100 多種。訊息內容和儲存的憑據只會發給你選定的服務端點，目的地由該服務商所在區域決定。網頁介面可管理和測試目標，設定保存在 /config 下。"
+release_note = "2.1.0-2：按審核意見整改——新增公開隱私政策 PRIVACY.md（含第三方端點披露），修正 auth 與設定儲存路徑描述，預設啟用 HTTP 基本認證（隨機管理員密碼見 config/admin-credentials.txt）。"
+important    = "需要 DockerEngine（缺少時自動安裝）。網頁登入用戶為 admin，隨機密碼保存在 DockerAppData/apprisedocker/config/admin-credentials.txt（刪除該檔案並重啟即可重設）。在網頁裡新增通知 URL 並存到 tag 下，然後 POST /notify/<tag>。目標與權杖只保存在 /config，無遙測。介面為區域網路明文 HTTP，遠端存取請用帶 TLS 的反向代理。隱私政策見 PRIVACY.md。"
 
 [fr-fr]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [de-de]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [it-it]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [es-es]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [hu-hu]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [ja-jp]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [ko-kr]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [pl-pl]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [ru-ru]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [tr-tr]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [pt-pt]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [ar-sa]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [cs-cz]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [he-il]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [id-id]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [nb-no]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [nl-nl]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [sv-se]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [th-th]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
 [vi-vn]
 name         = "Apprise API"
-auth         = "caronc"
+auth         = "Moechz"
 version      = "@@VERSION@@"
-descript     = "Apprise API is a single endpoint that delivers notifications to more than a hundred services - Mailgun, Telegram, ntfy, Slack, Discord, Gotify, webhooks and many more. Define the destinations once, store them under a tag, and let any script or app POST a message to that tag; the UI lets you test notifications and keep the configuration organised."
-release_note = "1. First release: Apprise API 2.1.0 from Docker Hub as a non-root container. One HTTP endpoint for 100+ notification services, web UI for testing and tag-based configuration in the application data folder."
-important    = "Requires DockerEngine (installed automatically if missing). Add notification URLs in the web UI (each service has a documented URL format), save them under a tag, then POST to /notify/<tag> from your scripts. Destinations are stored in DockerAppData/apprisedocker/config/config.yml. There is no built-in authentication by default - keep the port on your LAN or protect it with a reverse proxy. Plain HTTP; use TLS for remote access."
+descript     = "Apprise API (LinuxServer.io rebuild of caronc/apprise-api) is one HTTP endpoint that forwards a message to the notification services you configure - Telegram, Discord, Slack, SMTP, webhooks, ntfy, Gotify and 100+ more. The message and the credentials you save are sent only to those endpoints, in the region the provider operates. A web UI manages and tests the destinations; configurations live under /config."
+release_note = "2.1.0-2: review remediation - public privacy policy (PRIVACY.md) with third-party endpoint disclosure, corrected auth and configuration-path metadata, HTTP Basic Auth enabled by default (generated admin password in config/admin-credentials.txt)."
+important    = "Requires DockerEngine (auto-installed). Web login user 'admin'; the random password is in DockerAppData/apprisedocker/config/admin-credentials.txt (delete it and restart to rotate). Add notification URLs in the UI, save them under a tag, then POST /notify/<tag>. Destinations and tokens stay under /config; no telemetry. Plain HTTP for LAN use - TLS reverse proxy for remote access. See PRIVACY.md."
 
